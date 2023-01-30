@@ -10,11 +10,23 @@ export default function ToDoItem(props) {
   }
 
   return (
-    <li
-      onClick={handleClick}
-      style={{ textDecoration: isDone ? "line-through" : "none" }}
-    >
-      {props.text}
-    </li>
+    <div className="to-do-item">
+      <li style={{ backgroundColor: isDone ? "#fdcb6e" : "transparent" }}>
+        {props.text}
+      </li>
+      <button
+        onClick={handleClick}
+        style={{ display: isDone ? "none" : "block" }}
+      >
+        <span>Done</span>
+      </button>
+      <button
+        onClick={() => {
+          props.onChecked(props.id);
+        }}
+      >
+        <span>Delete</span>
+      </button>
+    </div>
   );
 }
